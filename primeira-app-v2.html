@@ -1,7 +1,8 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <div id="app">
-    {{ title }}
+    <input type="text" v-on:input="alterTitle">
+    <p>{{ title }}</p>
 </div>
 
 <script>
@@ -9,6 +10,11 @@
         el: '#app',
         data: {
             title: 'Hello World Vue!',
+        },
+        methods: {
+            alterTitle(event) {
+                this.title = event.target.value; 
+            }
         }
     })
 </script>
