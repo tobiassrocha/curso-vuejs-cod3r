@@ -1,0 +1,38 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p>{{ count }}</p>
+    <button v-on:click="addNumberCount(5, $event)">{{ textButton }}</button>
+    <p v-on:mousemove="showEvent">
+        Mouse {{ x }} e {{ y }} 
+        <span v-on:mousemove.stop>{{ stopText }}</span>
+    </p>
+    <a v-on:click="notNavigable" v-bind:href="link">{{ linkText }}</a>
+</div>
+
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            count: 0,
+            textButton: 'Add',
+            x: 0,
+            y: 0,
+            stopText: 'STOP HERE!',
+            link: 'http://google.com',
+            linkText: 'Go to google'
+        },
+        methods: {
+            addNumberCount(numb, event) {
+                this.count += numb;
+            },
+            showEvent(event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
+            },
+            notNavigable(event) {
+                event.preventDefault();
+            } 
+        }    
+    })
+</script>
