@@ -3,6 +3,7 @@
 <div id="app">
     <p>{{ count }}</p>
     <button v-on:click="addNumberCount">{{ textButton }}</button>
+    <p v-on:mousemove="showEvent">Mouse {{ x }} e {{ y }}</p>
 </div>
 
 <script>
@@ -11,10 +12,16 @@
         data: {
             count: 0,
             textButton: 'Add 1',
+            x: 0,
+            y: 0,
         },
         methods: {
             addNumberCount() {
                 return this.count++;
+            },
+            showEvent(event) {
+                this.x = event.clientX;
+                this.y = event.clientY;
             } 
         }    
     })
