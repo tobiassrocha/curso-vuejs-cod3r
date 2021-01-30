@@ -1,0 +1,28 @@
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app">
+    <p v-once>{{ title }}</p>
+    <div>{{ saudations() }}</div>
+    <br>    
+    <a v-bind:href="link" v-bind:target="valueBlank">{{ textLink }}</a>
+    <div v-html="linkHtml"></div>
+</div>
+ 
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            title: 'Templates for VueJS',
+            textLink: 'Ir para o google',
+            link: 'http://google.com',
+            valueBlank: '_blank',
+            linkHtml: '<a href="http://google.com" target="_blank">Ir para o google</a>'
+        },
+        methods: {
+            saudations() {
+                this.title = 'Text altered with v-once'
+                return this.title;
+            }
+        }    
+    })
+</script>
